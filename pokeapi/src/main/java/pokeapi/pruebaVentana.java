@@ -15,7 +15,14 @@ import java.net.URL;
 public class pruebaVentana {
     public static void main(String[] args) {
         JFrame frame = new JFrame("Pokemon Info");
+        frame.setLocationRelativeTo(null);
+        frame.setSize(new Dimension(500, 300));
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+
+        //al añadir el fondo, lo demás aparece debajo, por lo que no se ve
+        // JLabel backgroundLabel = new JLabel(new ImageIcon("images/fondoPokedex.jpg"));
+        // backgroundLabel.setSize(new Dimension(500, 300));
+        // frame.add(backgroundLabel);
 
         // Crear un panel para mostrar la imagen
         JPanel imagePanel = new JPanel();
@@ -34,26 +41,31 @@ public class pruebaVentana {
                 int height = basicInfo.getInt("height");
                 int weight = basicInfo.getInt("weight");
                 JSONArray types = basicInfo.getJSONArray("types");
+                int idPokedex = basicInfo.getInt("id");
 
                 // Mostrar información del Pokémon en el panel de información
                 JLabel nameLabel = new JLabel("Nombre: " + name);
                 JLabel heightLabel = new JLabel("Altura: " + height);
                 JLabel weightLabel = new JLabel("Peso: " + weight);
-                JLabel typesLabel = new JLabel("Tipos: ");
+                JLabel typesLabel = new JLabel();
+                JLabel idLabel = new JLabel("Id: "+idPokedex);
                 StringBuilder typesText = new StringBuilder();
                 for (int i = 0; i < types.length(); i++) {
                     JSONObject type = types.getJSONObject(i).getJSONObject("type");
                     typesText.append(type.getString("name")).append(" ");
                 }
-                typesLabel.setText(typesText.toString());
+                typesLabel.setText("Tipos: "+typesText.toString());
 
                 infoPanel.add(nameLabel);
                 infoPanel.add(heightLabel);
                 infoPanel.add(weightLabel);
                 infoPanel.add(typesLabel);
+                infoPanel.add(idLabel);
 
                 // Obtener la URL de la imagen del Pokémon
-                String imageUrl = basicInfo.getJSONObject("sprites").getString("front_default");
+                String imageUrl = basicInfo.getJSONObject("sprites").getJSONObject("other").getJSONObject("showdown").getString("front_default");
+                //String imageUrl = basicInfo.getJSONObject("sprites").getString("front_default");
+
 
                 // Cargar la imagen desde la URL
                 ImageIcon imageIcon = new ImageIcon(new URL(imageUrl));
@@ -64,7 +76,7 @@ public class pruebaVentana {
             e.printStackTrace();
         }
 
-        frame.pack();
+        // frame.pack();
         frame.setVisible(true);
     }
 
