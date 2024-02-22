@@ -35,25 +35,31 @@ public class pruebaVentana {
                 int weight = basicInfo.getInt("weight");
                 JSONArray types = basicInfo.getJSONArray("types");
 
+                // Obtener solo el primer tipo (tipo principal) del Pokémon
+                JSONObject primaryType = types.getJSONObject(0).getJSONObject("type");
+                String primaryTypeName = primaryType.getString("name");
+
                 // Mostrar información del Pokémon en el panel de información
                 JLabel nameLabel = new JLabel("Nombre: " + name);
                 JLabel heightLabel = new JLabel("Altura: " + height);
                 JLabel weightLabel = new JLabel("Peso: " + weight);
-                JLabel typesLabel = new JLabel("Tipos: ");
-                StringBuilder typesText = new StringBuilder();
+                JLabel typeLabel = new JLabel("Tipo: " + primaryTypeName);
+                //game-index es el número de la pokédex
+                /*StringBuilder typesText = new StringBuilder();
                 for (int i = 0; i < types.length(); i++) {
                     JSONObject type = types.getJSONObject(i).getJSONObject("type");
                     typesText.append(type.getString("name")).append(" ");
                 }
                 typesLabel.setText(typesText.toString());
+                */
 
                 infoPanel.add(nameLabel);
                 infoPanel.add(heightLabel);
                 infoPanel.add(weightLabel);
-                infoPanel.add(typesLabel);
+                infoPanel.add(typeLabel);
 
                 // Obtener la URL de la imagen del Pokémon
-                String imageUrl = basicInfo.getJSONObject("sprites").getString("front_default");
+                String imageUrl = basicInfo.getJSONObject("sprites").getJSONObject("other").getJSONObject("showdown").getString("front_default");
 
                 // Cargar la imagen desde la URL
                 ImageIcon imageIcon = new ImageIcon(new URL(imageUrl));
