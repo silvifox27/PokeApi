@@ -51,7 +51,6 @@ public class pruebaVentana {
                 JLabel nameLabel = new JLabel("Nombre: " + name);
                 JLabel heightLabel = new JLabel("Altura: " + height);
                 JLabel weightLabel = new JLabel("Peso: " + weight);
-<<<<<<< HEAD
                 JLabel typeLabel = new JLabel("Tipo: " + primaryTypeName);
                 //game-index es el número de la pokédex
                 /*StringBuilder typesText = new StringBuilder();
