@@ -277,7 +277,8 @@ public class pantallaEleccion {
 	private void mostrarPokemon(String nombrePokemon) {
 		// Crear una nueva ventana emergente (JOptionPane)
 		final JFrame frame = new JFrame("Bienvenido!!!");
-		frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE );
+        
 
 		// Crear un JPanel para organizar los componentes
 		JPanel panel = new JPanel(new BorderLayout());
