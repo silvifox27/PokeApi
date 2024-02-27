@@ -53,7 +53,7 @@ public class VentanaMenu extends JFrame {
 		btn_verPokemon.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
-				//añadir ventana de Samuel para ver el pokemon
+				//Añadir ventana de Samuel para ver el pokemon
 				
 			}
 		});
