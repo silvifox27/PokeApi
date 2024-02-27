@@ -21,7 +21,6 @@ import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.border.LineBorder;
 
-
 public class pantallaEleccion {
     private JFrame frame;
     private JLabel lbl_tipoFuego;
@@ -80,31 +79,31 @@ public class pantallaEleccion {
         frame.setBounds(100, 100, 593, 401);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.getContentPane().setLayout(null);
-    
+
         // Etiquetas para mostrar los tipos de Pokémon
         lbl_tipoPlanta = new JLabel("Planta");
         lbl_tipoPlanta.setHorizontalAlignment(SwingConstants.CENTER);
         lbl_tipoPlanta.setFont(new Font("Microsoft Sans Serif", Font.PLAIN, 13));
         lbl_tipoPlanta.setBounds(403, 254, 95, 13);
         frame.getContentPane().add(lbl_tipoPlanta);
-    
+
         lbl_tipoFuego = new JLabel("Fuego");
         lbl_tipoFuego.setHorizontalAlignment(SwingConstants.CENTER);
         lbl_tipoFuego.setFont(new Font("Microsoft Sans Serif", Font.PLAIN, 13));
         lbl_tipoFuego.setBounds(53, 254, 95, 13);
         frame.getContentPane().add(lbl_tipoFuego);
-    
+
         lbl_tipoAgua = new JLabel("Agua");
         lbl_tipoAgua.setHorizontalAlignment(SwingConstants.CENTER);
         lbl_tipoAgua.setFont(new Font("Microsoft Sans Serif", Font.PLAIN, 13));
         lbl_tipoAgua.setBounds(221, 254, 95, 13);
         frame.getContentPane().add(lbl_tipoAgua);
-    
+
         // ComboBox para seleccionar la generación de Pokémon
         cb_generaciones = new JComboBox<String>();
         cb_generaciones.setBounds(198, 33, 170, 21);
         frame.getContentPane().add(cb_generaciones);
-    
+
         // Inicialización del ArrayList de generaciones y configuración del ComboBox
         generaciones = new ArrayList<String>(); // Inicializa el ArrayList
         generaciones.add("Generación 1");
@@ -184,8 +183,6 @@ public class pantallaEleccion {
                 }
             }
         });
-        
-        
 
         frame.getContentPane().add(cb_generaciones);
 
@@ -205,7 +202,6 @@ public class pantallaEleccion {
         btn_tipoFuego.setBounds(53, 292, 113, 32);
         frame.getContentPane().add(btn_tipoFuego);
 
-
         btn_tipoAgua = new JButton("Elegir");
         btn_tipoAgua.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
@@ -216,7 +212,6 @@ public class pantallaEleccion {
         btn_tipoAgua.setForeground(Color.BLACK);
         btn_tipoAgua.setBounds(214, 292, 113, 32);
         frame.getContentPane().add(btn_tipoAgua);
-
 
         btn_tipoPlanta = new JButton("Elegir");
         btn_tipoPlanta.addActionListener(new ActionListener() {
@@ -245,23 +240,22 @@ public class pantallaEleccion {
         panel_1_2.setBounds(385, 102, 123, 115);
         frame.getContentPane().add(panel_1_2);
 
-        
     }
 
     private void mostrarPokemon(String nombrePokemon) {
         // Crear una nueva ventana emergente (JOptionPane)
         JFrame frame = new JFrame("Pokémon Elegido");
         frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-        
+
         // Crear un JPanel para organizar los componentes
         JPanel panel = new JPanel(new BorderLayout());
-        
+
         // Crear un JLabel para mostrar el nombre del Pokémon
         JLabel lblNombrePokemon = new JLabel("¡Has elegido a " + nombrePokemon + "!");
         lblNombrePokemon.setFont(new Font("Tahoma", Font.BOLD, 18));
         lblNombrePokemon.setHorizontalAlignment(SwingConstants.CENTER);
         panel.add(lblNombrePokemon, BorderLayout.NORTH);
-        
+
         // Obtener la URL del GIF del Pokémon elegido
         generacionesStarters starters = new generacionesStarters();
         URL gifURL = starters.obtenerGifPokemon(nombrePokemon);
@@ -277,10 +271,10 @@ public class pantallaEleccion {
             lblError.setHorizontalAlignment(SwingConstants.CENTER);
             panel.add(lblError, BorderLayout.CENTER);
         }
-        
+
         // Crear un JPanel para contener los botones
         JPanel buttonPanel = new JPanel(new FlowLayout());
-        
+
         // Botón para volver a elegir el Pokémon
         JButton btnElegirPokemon = new JButton("Volver a elegir");
         btnElegirPokemon.addActionListener(new ActionListener() {
@@ -291,29 +285,29 @@ public class pantallaEleccion {
             }
         });
         buttonPanel.add(btnElegirPokemon);
-        
+
         // Botón para jugar
         JButton btnJugar = new JButton("Jugar");
         btnJugar.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                // Aquí puedes agregar la lógica para comenzar el juego
-                // Por ejemplo, abrir una nueva ventana para el juego, etc.
+
+					VentanaMenu menu = new VentanaMenu();
+                    menu.setVisible(true);
             }
         });
         buttonPanel.add(btnJugar);
-        
+
         // Agregar el panel de botones al panel principal
         panel.add(buttonPanel, BorderLayout.SOUTH);
-        
+
         // Agregar el panel principal a la ventana
         frame.getContentPane().add(panel);
-        
+
         // Ajustar el tamaño de la ventana y hacerla visible
         frame.pack();
         frame.setLocationRelativeTo(null); // Centrar la ventana en la pantalla
         frame.setVisible(true);
     }
-    
-    
+
 }
