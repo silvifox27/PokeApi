@@ -138,66 +138,67 @@ public class pantallaEleccion {
 		cb_generaciones.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				String selectedGeneration = (String) cb_generaciones.getSelectedItem();
-				switch (selectedGeneration) {
-				case "Generación 1":
-                    lbl_tipoPlanta.setText("Bulbasaur");
-                    lbl_tipoFuego.setText("Charmander");
-                    lbl_tipoAgua.setText("Squirtle");
-                    generacionesStarters.mostrarPokemonGeneracion1(panel_planta, panel_fuego, panel_agua);
-					break;
-				case "Generación 2":
-					lbl_tipoFuego.setText("Cyndaquil");
-					lbl_tipoAgua.setText("Totodile");
-					lbl_tipoPlanta.setText("Chikorita");
-					generacionesStarters.mostrarPokemonGeneracion2(panel_agua, panel_planta, panel_fuego);
-					break;
-				case "Generación 3":
-					lbl_tipoPlanta.setText("Treecko");
-					lbl_tipoFuego.setText("Torchic");
-					lbl_tipoAgua.setText("Mudkip");
-					generacionesStarters.mostrarPokemonGeneracion3(panel_agua, panel_planta, panel_fuego);
-					break;
-				case "Generación 4":
-					lbl_tipoPlanta.setText("Turtwig");
-					lbl_tipoFuego.setText("Chimchar");
-					lbl_tipoAgua.setText("Piplup");
-					generacionesStarters.mostrarPokemonGeneracion4(panel_agua, panel_planta, panel_fuego);
-					break;
-				case "Generación 5":
-					lbl_tipoPlanta.setText("Snivy");
-					lbl_tipoFuego.setText("Tepig");
-					lbl_tipoAgua.setText("Oshawott");
-					generacionesStarters.mostrarPokemonGeneracion5(panel_agua, panel_planta, panel_fuego);
-					break;
-				case "Generación 6":
-					lbl_tipoPlanta.setText("Chespin");
-					lbl_tipoFuego.setText("Fennekin");
-					lbl_tipoAgua.setText("Froakie");
-					generacionesStarters.mostrarPokemonGeneracion6(panel_agua, panel_planta, panel_fuego);
-					break;
-				case "Generación 7":
-					lbl_tipoPlanta.setText("Rowlet");
-					lbl_tipoFuego.setText("Litten");
-					lbl_tipoAgua.setText("Popplio");
-					generacionesStarters.mostrarPokemonGeneracion7(panel_agua, panel_planta, panel_fuego);
-					break;
-				case "Generación 8":
-					lbl_tipoPlanta.setText("Grookey");
-					lbl_tipoFuego.setText("Scorbunny");
-					lbl_tipoAgua.setText("Sobble");
-					generacionesStarters.mostrarPokemonGeneracion8(panel_agua, panel_planta, panel_fuego);
-					break;
-				case "Generación 9":
-					lbl_tipoPlanta.setText("Sprigatito");
-					lbl_tipoFuego.setText("Fuecoco");
-					lbl_tipoAgua.setText("Quaxly");
-					generacionesStarters.mostrarPokemonGeneracion9(panel_agua, panel_planta, panel_fuego);
-					break;
-				// Puedes agregar casos para otras generaciones aquí si es necesario
-				default:
-					// Manejo para generaciones no implementadas o no válidas
-					break;
-				}
+				String nombreAgua = "";
+                String nombrePlanta = "";
+                String nombreFuego = "";
+
+                switch (selectedGeneration) {
+                    case "Generación 1":
+                        nombreAgua = "Squirtle";
+                        nombrePlanta = "Bulbasaur";
+                        nombreFuego = "Charmander";
+                        break;
+                    case "Generación 2":
+                        nombreAgua = "Totodile";
+                        nombrePlanta = "Chikorita";
+                        nombreFuego = "Cyndaquil";
+                        break;
+                    case "Generación 3":
+                        nombreAgua = "Mudkip";
+                        nombrePlanta = "Treecko";
+                        nombreFuego = "Torchic";
+                        break;
+                    case "Generación 4":
+                        nombreAgua = "Piplup";
+                        nombrePlanta = "Turtwig";
+                        nombreFuego = "Chimchar";
+                        break;
+                    case "Generación 5":
+                        nombreAgua = "Oshawott";
+                        nombrePlanta = "Snivy";
+                        nombreFuego = "Tepig";
+                        break;
+                    case "Generación 6":
+                        nombreAgua = "Froakie";
+                        nombrePlanta = "Chespin";
+                        nombreFuego = "Fennekin";
+                        break;
+                    case "Generación 7":
+                        nombreAgua = "Popplio";
+                        nombrePlanta = "Rowlet";
+                        nombreFuego = "Litten";
+                        break;
+                    case "Generación 8":
+                        nombreAgua = "Sobble";
+                        nombrePlanta = "Grookey";
+                        nombreFuego = "Scorbunny";
+                        break;
+                    case "Generación 9":
+                        nombreAgua = "Quaxly";
+                        nombrePlanta = "Sprigatito";
+                        nombreFuego = "Fuecoco";
+                        break;
+                    // Puedes agregar casos para otras generaciones aquí si es necesario
+                    default:
+                        // Manejo para generaciones no implementadas o no válidas
+                        break;
+                }
+
+                lbl_tipoAgua.setText(nombreAgua);
+                lbl_tipoPlanta.setText(nombrePlanta);
+                lbl_tipoFuego.setText(nombreFuego);
+
+                generacionesStarters.mostrarPokemonGeneracion(nombrePlanta, nombreFuego, nombreAgua, panel_planta, panel_fuego, panel_agua);
 			}
 		});
 
