@@ -328,10 +328,15 @@ public class pantallaEleccion {
 		btnJugar.setFont(new Font("Consolas", Font.PLAIN, 11));
 		btnJugar.addActionListener(new ActionListener() {
 			@Override
-			public void actionPerformed(ActionEvent e) {
-				
-			}
-		});
+            public void actionPerformed(ActionEvent e) {
+                // Crear una instancia de VentanaMenu
+                VentanaMenu ventanaMenu = new VentanaMenu();
+                // Hacer visible la ventana
+                ventanaMenu.setVisible(true);
+                // Cerrar la ventana actual
+                frmPokochi.dispose(); // asumiendo que "frmPokochi" es la instancia de tu ventana actual
+            }
+        });
 		buttonPanel.add(btnJugar);
 
 		// Agregar el panel de botones al panel principal
